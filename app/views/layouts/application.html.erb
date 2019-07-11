@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TinderApp</title>
+    <title>TechpitMatch2</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    
+    <!-- ここにcurrent_user_idを設定する -->
+    <meta name="current_user_id" content="<%= current_user.id if current_user %>">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<body>
-  <% if flash[:notice] %>
-    <!-- ここにclassを追加する -->
-    <div class="alert alert-info"><%= flash[:notice] %></div>
-  <% end %>
-  <% if flash[:alert] %>
-    <!-- ここにclassを追加する -->
-    <div class="alert alert-danger"><%= flash[:alert] %></div>
-  <% end %>
-  <%= yield %>
-</body>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
 </html>
