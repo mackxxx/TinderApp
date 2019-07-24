@@ -6,7 +6,6 @@ class ChatController < ApplicationController
     chat_room = ChatRoomUser.where(chat_room: current_user_chat_rooms, user_id: params[:user_id]).map(&:chat_room).first
     # なければ作成する
     if chat_room.blank?
-      # chat_roomsテーブルにレコードを作成
       chat_room = ChatRoom.create
       ChatRoomUser.create(chat_room: chat_room, user_id: current_user.id)
       ChatRoomUser.create(chat_room: chat_room, user_id: params[:user_id])
@@ -15,8 +14,6 @@ class ChatController < ApplicationController
     redirect_to action: :show, id: chat_room.id
   end
 
-
-  # showアクションを追加する
   def show
     # チャット相手の情報を取得する
     chat_room = ChatRoom.find_by(id: params[:id])
